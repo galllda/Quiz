@@ -16,7 +16,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, write your name:");
         String name = scanner.nextLine();
-        boolean next;
+        boolean next=true;
 
         while (next) {
             System.out.println(name + ", please choose the Quiz: 1-Math, 2-Geography");

@@ -1,7 +1,6 @@
 package Quiz;
 
 
-import java.nio.channels.ScatteringByteChannel;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -17,11 +16,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, write your name:");
         String name = scanner.nextLine();
-        boolean next = true;
+        boolean next;
 
         while (next) {
             System.out.println(name + ", please choose the Quiz: 1-Math, 2-Geography");
-            int theme = 0;
+            int theme;
             while (true) {
                 try {
                     theme = scanner.nextInt();
@@ -93,12 +92,12 @@ public class Main {
                     next = true;
                 } else {
                     next = false;
+                    System.out.println("Goodbye "+name);
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Write option 1 or 2!");
                 scanner.nextInt();
             }
-
         }
     }
 }

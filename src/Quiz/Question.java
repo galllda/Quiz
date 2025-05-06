@@ -1,31 +1,38 @@
 package Quiz;
 
-import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-public class Questions {
+
+public class Question {
     private String question;
     private String type;
-    private Map<Character, String> options;
     private String correctAnswer;
+    private List<Answer> answers;
 
-    public Questions(String question, String type, Map<Character, String> options, String correctAnswer) {
+
+    public Question(String question, String type, String correctAnswer) {
         this.question = question;
         this.type = type;
-        this.options = options;
         this.correctAnswer = correctAnswer;
+        this.answers = new ArrayList<>();
+
+    }
+
+    public void addAnswer(Answer answer) {
+        this.answers.add(answer);
+
     }
 
     public String getType() {
         return type;
     }
 
-    public void printQuestion() {
+    public void print() {
         System.out.println(this.question + " (" + this.type + " answer)");
-        for (Map.Entry<Character, String> option : this.options.entrySet()) {
-            System.out.println(option.getKey() + ". " + option.getValue());
+        for (Answer answer : this.answers) {
+            answer.print();
         }
     }
 
@@ -38,7 +45,5 @@ public class Questions {
             String sorted = new String(sort);
             return (sorted.contains(this.correctAnswer));
         }
-
     }
-
 }

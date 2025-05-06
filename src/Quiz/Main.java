@@ -1,10 +1,7 @@
 package Quiz;
 
-
-import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,7 +13,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, write your name:");
         String name = scanner.nextLine();
-        boolean next=true;
+        boolean next = true;
 
         while (next) {
             System.out.println(name + ", please choose the Quiz: 1-Math, 2-Geography");
@@ -37,48 +34,63 @@ public class Main {
             switch (theme) {
                 case 1:
                     Quiz mathQuiz = new Quiz("Math quiz", name);
-                    Map<Character, String> question1 = new HashMap<>();
-                    question1.put('a', "5");
-                    question1.put('b', "4");
-                    question1.put('c', "10");
 
-                    mathQuiz.addQuestion(new Questions("Kolik je 2+2?", "single", question1, "b"));
+                    Question question1 = new Question("Kolik je 2+2?", "single", "b");
+                    Answer answer1 = new Answer("a", "5");
+                    question1.addAnswer(answer1);
+                    Answer answer2 = new Answer("b", "4");
+                    question1.addAnswer(answer2);
+                    Answer answer3 = new Answer("c", "10");
+                    question1.addAnswer(answer3);
+                    mathQuiz.addQuestion(question1);
 
-                    Map<Character, String> question2 = new HashMap<>();
-                    question2.put('a', "4");
-                    question2.put('b', "7");
-                    question2.put('c', "1");
+                    Question question2 = new Question("Kolik je 2+5?", "single", "b");
+                    Answer answer4 = new Answer("a", "4");
+                    question2.addAnswer(answer4);
+                    Answer answer5 = new Answer("b", "7");
+                    question2.addAnswer(answer5);
+                    Answer answer6 = new Answer("c", "1");
+                    question2.addAnswer(answer6);
+                    mathQuiz.addQuestion(question2);
 
-                    mathQuiz.addQuestion(new Questions("Kolik je 2+5?", "single", question2, "b"));
+                    Question question3 = new Question("4=?", "multiple", "abc");
+                    Answer answer7 = new Answer("a", "2^2");
+                    question3.addAnswer(answer7);
+                    Answer answer8 = new Answer("b", "-2^2");
+                    question3.addAnswer(answer8);
+                    Answer answer9 = new Answer("c", "1+3");
+                    question3.addAnswer(answer9);
+                    mathQuiz.addQuestion(question3);
 
-                    Map<Character, String> question3 = new HashMap<>();
-                    question3.put('a', "2^2");
-                    question3.put('b', "-2^2");
-                    question3.put('c', "1+3");
-
-                    mathQuiz.addQuestion(new Questions("4=?", "multiple", question3, "abc"));
                     mathQuiz.game();
                     break;
+
                 case 2:
                     Quiz mathQuiz2 = new Quiz("Geography quiz", name);
-                    Map<Character, String> question4 = new HashMap<>();
 
-                    question4.put('a', "Pariz");
-                    question4.put('b', "Praha");
-                    question4.put('c', "Berlin");
+                    Question question4 = new Question("Hlavni mesto Francie je?", "single", "a");
+                    Answer answer10 = new Answer("a", "Pariz");
+                    question4.addAnswer(answer10);
+                    Answer answer11 = new Answer("b", "Praha");
+                    question4.addAnswer(answer11);
+                    Answer answer12 = new Answer("c", "Berlin");
+                    question4.addAnswer(answer12);
+                    mathQuiz2.addQuestion(question4);
 
-                    mathQuiz2.addQuestion(new Questions("Hlavni mesto Francie je", "single", question4, "a"));
 
-                    Map<Character, String> question5 = new HashMap<>();
-                    question5.put('a', "Baltské moře");
-                    question5.put('b', "Jaderské moře");
-                    question5.put('c', "Středozemní moře");
+                    Question question5 = new Question("Které moře leží mezi Itálií a Chorvatskem?", "single", "b");
+                    Answer answer13 = new Answer("a", "Baltské moře");
+                    question5.addAnswer(answer13);
+                    Answer answer14 = new Answer("b", "Jaderské moře");
+                    question5.addAnswer(answer14);
+                    Answer answer15 = new Answer("c", "Středozemní moře");
+                    question5.addAnswer(answer15);
+                    mathQuiz2.addQuestion(question5);
 
-                    mathQuiz2.addQuestion(new Questions("Které moře leží mezi Itálií a Chorvatskem?", "single", question5, "b"));
+                    Question question6 = new Question("Na kterém kontinentu leží Australie?", "open", "australie");
 
-                    Map<Character, String> question6 = new HashMap<>();
+                    mathQuiz2.addQuestion(question6);
 
-                    mathQuiz2.addQuestion(new Questions("Na kterém kontinentu leží Australie?", "open", question6, "australie"));
                     mathQuiz2.game();
                     break;
                 default:
@@ -92,7 +104,7 @@ public class Main {
                     next = true;
                 } else {
                     next = false;
-                    System.out.println("Goodbye "+name);
+                    System.out.println("Goodbye " + name);
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Write option 1 or 2!");

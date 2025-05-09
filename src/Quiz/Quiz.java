@@ -28,7 +28,8 @@ public class Quiz {
         for (Question question : this.questionList) {
 
             String userInput;
-            question.print();
+
+                question.print();
 
 
             while (true) {
